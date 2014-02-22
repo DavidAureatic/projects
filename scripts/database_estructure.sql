@@ -2,9 +2,11 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP DATABASE IF EXISTS `mydb` ;
 
-CREATE DATABASE `mydb`
+
+DROP SCHEMA IF EXISTS `mydb` ;
+DROP DATABASE IF EXISTS `mydb` ;
+CREATE DATABASE `mydb`;
 
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
@@ -73,47 +75,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `tfno` VARCHAR(12) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`idusers`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`duties_has_projects` (
-  `duties_idduties` INT(11) NOT NULL,
-  `projects_idproject` INT(11) NOT NULL,
-  PRIMARY KEY (`duties_idduties`, `projects_idproject`),
-  INDEX `fk_duties_has_projects_projects1_idx` (`projects_idproject` ASC),
-  INDEX `fk_duties_has_projects_duties_idx` (`duties_idduties` ASC),
-  CONSTRAINT `fk_duties_has_projects_duties`
-    FOREIGN KEY (`duties_idduties`)
-    REFERENCES `mydb`.`duties` (`idduties`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_duties_has_projects_projects1`
-    FOREIGN KEY (`projects_idproject`)
-    REFERENCES `mydb`.`projects` (`idproject`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`users_has_duties_has_projects` (
-  `users_idusers` INT(11) NOT NULL,
-  `duties_has_projects_duties_idduties` INT(11) NOT NULL,
-  `duties_has_projects_projects_idproject` INT(11) NOT NULL,
-  PRIMARY KEY (`users_idusers`, `duties_has_projects_duties_idduties`, `duties_has_projects_projects_idproject`),
-  INDEX `fk_users_has_duties_has_projects_duties_has_projects1_idx` (`duties_has_projects_duties_idduties` ASC, `duties_has_projects_projects_idproject` ASC),
-  INDEX `fk_users_has_duties_has_projects_users1_idx` (`users_idusers` ASC),
-  CONSTRAINT `fk_users_has_duties_has_projects_users1`
-    FOREIGN KEY (`users_idusers`)
-    REFERENCES `mydb`.`users` (`idusers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_has_duties_has_projects_duties_has_projects1`
-    FOREIGN KEY (`duties_has_projects_duties_idduties` , `duties_has_projects_projects_idproject`)
-    REFERENCES `mydb`.`duties_has_projects` (`duties_idduties` , `projects_idproject`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
