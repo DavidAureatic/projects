@@ -28,6 +28,16 @@ Tweet: <input type="text" name="tweet" value="<?=isset($project['tweet'])?$proje
 </li>
 <li>
 <?=(getSelect($optionsS,'Status','statuses_idstatuses',(isset($project['statuses_idstatuses'])?$project['statuses_idstatuses']:''),''))?>
+<?=
+//EJEMPLO SELECT MULTIPLE
+//(getSelect($optionsS,'Status','statuses_idstatuses',(isset($project['statuses_idstatuses'])?$project['statuses_idstatuses']:''),'multiple'))
+//EJEMPLO RADIO BUTTON
+//(getcheck($optionsS,'Status','statuses_idstatuses',(isset($project['statuses_idstatuses'])?$project['statuses_idstatuses']:''),'radio'))
+//EJEMPLO CHECKBOX
+//(getcheck($optionsS,'Status','statuses_idstatuses',(isset($project['statuses_idstatuses'])?$project['statuses_idstatuses']:''),'checkbox'))
+
+?>
+
 <li>
 Enviar: <input type="submit" name="Enviar"/>
 </li>

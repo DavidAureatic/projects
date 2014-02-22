@@ -1,8 +1,8 @@
-*********************************************************
+﻿*********************************************************
 INSTALACION
 *********************************************************
 
-1º) copiar los ficheros en el document root del proyecto.
+1º) copiar la carpeta projects en el document root.
 
 2º) cambiar los datos de conexión del fichero 
 	application/configs/settting.ini
@@ -17,12 +17,13 @@ INSTALACION
 	
 3º) Preparar base de datos:
 	Podemos hacerlo de dos formas:
-	3.a) Restaurar backup que se encuentra en: (método rápido)
+	(método rápido)
+	3.a) Restaurar backup que se encuentra en: 
 		/scripts/dump/mydb.sql
 
 	3.b) Ejecutar los scripts de la carpeta  /scripts
 		en este orden: 
-			- database_strucutre.sql
-			- update_database.sql
-			- data.sql
+			- database_strucutre.sql         /modelo original
+			- update_database.sql 			 /modificaciones
+			- data.sql						 /datos parametricos
 
