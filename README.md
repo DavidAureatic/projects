@@ -1,4 +1,0 @@
-projects
-========
-
-deberes projects cntg
